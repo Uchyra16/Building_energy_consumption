@@ -1,16 +1,25 @@
 #include <iostream>
+#include <algorithm>
 #include <vector>
 using namespace std;
 
 // Aplikacja estymujaca zuzycie energii w budynku
 
+
+//Klasa bazowa struktury kompozytowej - drzewiastej
 class Component {
 public:
     string name;
 
-    virtual void display() {}
+	virtual void add(Component *component) {}
+	virtual void remove(Component *component) {}
+	virtual void display() {}
 };
 
+
+// Klasa Building - Kompozyt(Kontener) posiada elementy podrzędne - liście lub inne kontenery w tym przypadku urządzenia lub pokoje
+// Kontener komunikuje się z elementami podrzednymi tylko poprzez interfejs komponentu
+// Kontener deleguje prace do swoich podelementów
 class Building : public Component {
 private:
     vector<Component*> rooms;
@@ -20,9 +29,13 @@ public:
         name = n;
     }
 
-    void add(Component* component) {
-        rooms.push_back(component);
+    void add(Component* component) override {
+        this->rooms.push_back(component);
     }
+
+	void remove(Component* component) override {
+		rooms.erase(std::remove(rooms.begin(), rooms.end(), component), rooms.end());
+	}
 
     void traverse_rooms() {
         for (int i = 0; i < rooms.size(); i++) {
@@ -31,6 +44,9 @@ public:
     }
 };
 
+
+// Klasa device - liść w strukturze kompozytu
+// Liść w strukturze kompozytu jest podstawowym elementem i nie posiada elementów podrzędnych
 class Device {
 	private:
 		string name;
@@ -50,7 +66,8 @@ class Device {
 		
 };
 
-
+// Klasa Room - jest podrzędnym kontenerem klasy Building
+// W pokoju znajdują sie inne urządzenia - liście
 class Room : public Component {
 	private:
 		vector<Device*> devices;
@@ -63,7 +80,7 @@ class Room : public Component {
     void display() override {
         cout << "Pokoj: " << name << endl;
         if(devices.empty()) {
-             cout << "Nie ma na razie urzadzen" << endl;	
+             cout << "Do tego pokoju nie dodano zadnych urzadzen!..." << endl;	
 		} else {
 			display_devices();
 		}

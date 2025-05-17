@@ -9,6 +9,10 @@
           "-g",              // debug info
           "main.cpp",
           "menu.cpp",
+          "Building.cpp",
+          "Device.cpp",
+          "DeviceBuilder.cpp",
+          "Room.cpp",
           "-o",
           "app.exe"
         ],

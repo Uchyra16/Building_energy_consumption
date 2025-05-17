@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <conio.h>
+#include "Room.h"
 using namespace std;
 
 
@@ -22,5 +23,10 @@ void Notifications_menu();
 void Settings_menu();
 
 
-char Starting_menu();
+char Main_menu();
 
+void menuFooter_starting();
+
+string Starting_menu1();
+
+void Starting_menu2();

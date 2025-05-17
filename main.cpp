@@ -15,11 +15,15 @@ using namespace std;
 
 bool running = true;
 string building_name = "";
+Building* building = new Building(building_name);
 
 int main() {
 	//W startowym menu uzytkownik wpisuje nazwe swojego budynku
 	building_name = Starting_menu1();
-	Building* building = new Building(building_name);
+	building->name = building_name;
+
+	Starting_menu2();
+	Starting_menu3();
 
 	while(running) {
 		  // zwraca wybór użytkownika

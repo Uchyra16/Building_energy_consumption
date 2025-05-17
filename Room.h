@@ -12,9 +12,9 @@ using namespace std;
 class Room : public Component {
 	private:
 		vector<Component*> devices;
-	
-	public:
-        Room(string n);
+
+    public:
+        Room(string n, int ID);
         ~Room();
 
         void add(Component *device) override;
@@ -24,4 +24,8 @@ class Room : public Component {
         void display() override;
 
         void display_devices();
+
+        friend void RoomList_menu();
+        friend void Starting_menu3();
+        friend void Starting_menu4();
 };

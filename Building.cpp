@@ -20,9 +20,11 @@ void Building::remove(Component* room) {
 }
 
 void Building::display() {
-    cout << "Budynek: " << this->name << endl;
-    for (int i = 0; i < rooms.size(); i++) {
-        rooms.at(i)->display(); 
+
+    for (int i = 1; i <= rooms.size(); i++)
+    {
+        cout << "Pokoj [" << i << "] :" << rooms.at(i-1)->name << endl;
     }
+
 }
    

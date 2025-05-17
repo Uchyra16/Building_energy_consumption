@@ -1,7 +1,8 @@
 #include "Room.h"
 
-Room::Room(string n) {
+Room::Room(string n, int id) {
     name = n;
+    ID = id;
 }
 
 Room::~Room() {

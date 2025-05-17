@@ -7,7 +7,9 @@ using namespace std;
 class Component {
     public:
         string name;
-    
+        int ID;
+        int number_of_devices;
+
         virtual void add(Component *component) {}
         virtual void remove(Component *component) {}
         virtual void display() {}

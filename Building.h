@@ -23,4 +23,8 @@ class Building : public Component {
         void remove(Component *room) override;
 
         void display();
+
+        friend void RoomList_menu();
+        friend void Room_menu(int ID);
+        friend void Starting_menu3();
     };

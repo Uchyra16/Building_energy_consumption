@@ -182,10 +182,24 @@ class Room : public Component {
 		}
 };
 
+bool running = true;
 
 int main() {
 
-	bool running = true;
+	clearConsole();
+	while(1) {
+		menuHeader("EKRAN STARTOWY");
+		cout << "\n\n\n\n";
+		menuFooter();
+
+		char menu_choice = _getch();
+
+		if(menu_choice == '8') {
+			break;
+		} else {
+			clearConsole();
+		}
+	}
 
 	while(running) {
 		  // zwraca wybór użytkownika
@@ -215,46 +229,48 @@ int main() {
         }
 	}
 
-	 Building* building1 = new Building("Dom");
+	//  Building* building1 = new Building("Dom");
 
-	 Room* pokoj1 = new Room("Kuchnia");
-	 Room *pokoj2 = new Room("Lazienka");
+	//  Room* pokoj1 = new Room("Kuchnia");
+	//  Room *pokoj2 = new Room("Lazienka");
    
-	 building1->add(pokoj1);
-	 building1->add(pokoj2);
+	//  building1->add(pokoj1);
+	//  building1->add(pokoj2);
 
-	 DeviceBuilder builder;
-	 Device* device1 = builder
-		 .setName("Vacuum Cleaner")
-		 .setPower(1200)
-		 .setHours(2)
-		 .setType("Cleaning")
-		 .build();
-	 Device* device2 = builder
-		 .setName("Fridge")
-		 .setPower(2000)
-		 .setHours(24)
-		 .setType("Food")
-		 .build();
-	 Device* device3 = builder
-		 .setName("TV")
-		 .setPower(120)
-		 .setHours(6)
-		 .setType("RTV")
-		 .build();
-	 Device* device4 = builder
-		 .setName("Ludzik")
-		 .setPower(12000)
-		 .setHours(11)
-		 .setType("ludzik")
-		 .build();
+	//  DeviceBuilder builder;
+	//  Device* device1 = builder
+	// 	 .setName("Vacuum Cleaner")
+	// 	 .setPower(1200)
+	// 	 .setHours(2)
+	// 	 .setType("Cleaning")
+	// 	 .build();
+	//  Device* device2 = builder
+	// 	 .setName("Fridge")
+	// 	 .setPower(2000)
+	// 	 .setHours(24)
+	// 	 .setType("Food")
+	// 	 .build();
+	//  Device* device3 = builder
+	// 	 .setName("TV")
+	// 	 .setPower(120)
+	// 	 .setHours(6)
+	// 	 .setType("RTV")
+	// 	 .build();
+	//  Device* device4 = builder
+	// 	 .setName("Ludzik")
+	// 	 .setPower(12000)
+	// 	 .setHours(11)
+	// 	 .setType("ludzik")
+	// 	 .build();
 
-	 pokoj1->add(device1);
-	 pokoj1->add(device2);
+	//  pokoj1->add(device1);
+	//  pokoj1->add(device2);
 
-	 pokoj2->add(device3);
-	 pokoj2->add(device4);
+	//  pokoj2->add(device3);
+	//  pokoj2->add(device4);
 
-	 building1->display();
+	//  building1->display();
 
+	//  getchar();
+	//  getchar();
 }

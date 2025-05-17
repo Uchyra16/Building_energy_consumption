@@ -30,6 +30,8 @@ void ConsumptionSummary_menu()
 	
 		if(menu_choice == '8') {
 			break;
+		} else {
+			clearConsole();
 		}
 	}
 }
@@ -46,6 +48,8 @@ void RoomList_menu()
 	
 		if(menu_choice == '8') {
 			break;
+		} else {
+			clearConsole();
 		}
 	}
 
@@ -63,6 +67,8 @@ void History_menu()
 	
 		if(menu_choice == '8') {
 			break;
+		} else {
+			clearConsole();
 		}
 	}
 }
@@ -79,6 +85,8 @@ void Notifications_menu()
 	
 		if(menu_choice == '8') {
 			break;
+		} else {
+			clearConsole();
 		}
 	}
 }
@@ -92,9 +100,11 @@ void Settings_menu()
 		menuFooter();
 
 		char menu_choice = _getch();
-	
+
 		if(menu_choice == '8') {
 			break;
+		} else {
+			clearConsole();
 		}
 	}
 }

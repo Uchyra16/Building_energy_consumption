@@ -17,10 +17,9 @@ public:
 	virtual void display() {}
 
 	virtual ~Component() {
-		cout << "Destructor has been called!...";
+		cout << "Destructor has been called!...\n";
 	}
 };
-
 
 // Klasa Building - Kompozyt(Kontener) posiada elementy podrzędne - liście lub inne kontenery w tym przypadku urządzenia lub pokoje
 // Kontener komunikuje się z elementami podrzednymi tylko poprzez interfejs komponentu
@@ -67,15 +66,76 @@ class Device : public Component {
 		string type;
 		
 	public:
-		Device(string name, int power) {
-			this->name = name;
-			this->power = power; 
-		}
-		
+
+		// Domyślny konstruktor
+		Device() : name(""), power(0), hours(0), type("") {}
+
+		// Ustawienia buildera
+		void setName(const string& name) { this->name = name; }
+		void setPower(int power) { this->power = power; }
+		void setHours(int hours) { this->hours = hours; }
+		void setType(const string& type) { this->type = type; }
+
 		void display() override {
-			cout << this->name << ", ";
+			cout << "\n   Urzadzenie: " << name
+				<< ", Moc: " << power << "W"
+				<< ", Czas pracy: " << hours << "h"
+				<< ", Typ: " << type << endl;
 		}
 		
+};
+
+// Klasa DeviceBuilder - służąca do dodawania nowych urządzeń
+class DeviceBuilder {
+private:
+	Device* device;
+
+public:
+
+	DeviceBuilder() {
+		this->Reset();
+	}
+
+	~DeviceBuilder() {
+		delete device;
+	}
+
+	// Nowe urządzenie
+	void Reset() {
+		delete this->device;
+		this->device = new Device();
+	}
+
+	// Metody budowniczego
+	DeviceBuilder& setName(const string& name) {
+		this->device->setName(name);
+		return *this;
+	}
+
+	DeviceBuilder& setPower(int power) {
+		this->device->setPower(power);
+		return *this;
+	}
+
+	DeviceBuilder& setHours(int hours) {
+		this->device->setHours(hours);
+		return *this;
+	}
+
+	DeviceBuilder& setType(const string& type) {
+		this->device->setType(type);
+		return *this;
+	}
+
+	// Budowanie urządzenia
+	Device* build() {
+		Device* result = this->device;
+		this->device = nullptr;	
+		this->Reset();
+		return result;
+
+	}
+
 };
 
 // Klasa Room - jest podrzędnym kontenerem klasy Building
@@ -122,9 +182,9 @@ class Room : public Component {
 		}
 };
 
+
 int main() {
 
-	
 	bool running = true;
 
 	while(running) {
@@ -155,26 +215,46 @@ int main() {
         }
 	}
 
-	// Building* building1 = new Building("Dom");
+	 Building* building1 = new Building("Dom");
 
-	// Room* pokoj1 = new Room("Kuchnia");
-	// Device* device1 = new Device("Piekarnik", 123);
-	// Device *device2 = new Device("Zmywarka", 345);
-
-	// Room *pokoj2 = new Room("Lazienka");
-	// Device* device3 = new Device("Kibel", 123);
-	// Device *device4 = new Device("Prysznic", 345);
+	 Room* pokoj1 = new Room("Kuchnia");
+	 Room *pokoj2 = new Room("Lazienka");
    
+	 building1->add(pokoj1);
+	 building1->add(pokoj2);
 
-	// building1->add(pokoj1);
-	// building1->add(pokoj2);
+	 DeviceBuilder builder;
+	 Device* device1 = builder
+		 .setName("Vacuum Cleaner")
+		 .setPower(1200)
+		 .setHours(2)
+		 .setType("Cleaning")
+		 .build();
+	 Device* device2 = builder
+		 .setName("Fridge")
+		 .setPower(2000)
+		 .setHours(24)
+		 .setType("Food")
+		 .build();
+	 Device* device3 = builder
+		 .setName("TV")
+		 .setPower(120)
+		 .setHours(6)
+		 .setType("RTV")
+		 .build();
+	 Device* device4 = builder
+		 .setName("Ludzik")
+		 .setPower(12000)
+		 .setHours(11)
+		 .setType("ludzik")
+		 .build();
 
-	// pokoj1->add(device1);
-	// pokoj1->add(device2);
+	 pokoj1->add(device1);
+	 pokoj1->add(device2);
 
-	// pokoj2->add(device3);
-	// pokoj2->add(device4);
+	 pokoj2->add(device3);
+	 pokoj2->add(device4);
 
-	// building1->display();
+	 building1->display();
 
 }

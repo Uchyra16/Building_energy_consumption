@@ -4,6 +4,7 @@
 using namespace std;
 
 #include "Component.h"
+#include "Room.h"
 
 // Klasa device - liść w strukturze kompozytu
 // Liść w strukturze kompozytu jest podstawowym elementem i nie posiada elementów podrzędnych
@@ -13,17 +14,22 @@ class Device : public Component {
 		int power;
 		int hours;
 		string type;
-		
-	public:
+        int ID;
+
+    public:
 
 		// Domyślny konstruktor
         Device();
 
         // Ustawienia buildera
+        void setID(int ID);
         void setName(const string &name);
         void setPower(int power);
         void setHours(int hours);
         void setType(const string &type);
+        double getEnergyConsumption() const;
 
         void display() override;
+
+        friend void Device_configuration(Room* room);
 };

@@ -15,6 +15,12 @@ void DeviceBuilder::Reset() {
 }
 
 // Metody budowniczego
+
+DeviceBuilder& DeviceBuilder::setID(int ID) {
+    this->device->setID(ID);
+    return *this;
+}
+
 DeviceBuilder& DeviceBuilder::setName(const string& name) {
     this->device->setName(name);
     return *this;

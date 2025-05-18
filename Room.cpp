@@ -30,7 +30,7 @@ void Room::display() {
 }
 
 void Room::display_devices() {
-    cout << "Urzadzenia: ";
+    cout << "\nUrzadzenia: \n";
     for(int i = 0; i < devices.size(); i++) {
         devices.at(i)->display();
     }

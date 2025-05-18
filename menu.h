@@ -4,6 +4,7 @@
 #include <conio.h>
 #include "Building.h"
 #include "Device.h"
+#include "DeviceBuilder.h"
 #include "Room.h"
 using namespace std;
 
@@ -36,3 +37,6 @@ void Starting_menu2();
 void Starting_menu3();
 
 void Starting_menu4();
+
+
+

@@ -20,6 +20,8 @@ class DeviceBuilder {
         void Reset();
 
         // Metody budowniczego
+        DeviceBuilder &setID(int ID);
+
         DeviceBuilder &setName(const string &name);
 
         DeviceBuilder &setPower(int power);

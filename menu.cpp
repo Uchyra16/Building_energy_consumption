@@ -5,6 +5,7 @@ extern bool running;
 extern string building_name;
 int menu_choice = 0;
 extern Building *building;
+extern DeviceBuilder builder;
 
 string clientInput()
 {
@@ -285,6 +286,7 @@ void Starting_menu2()
 	}
 }
 
+
 void Starting_menu3() 
 {
 	int number_of_devices = 0;
@@ -322,12 +324,74 @@ void Starting_menu3()
 		} while (number_of_devices < 0 || number_of_devices > 15);
 		
 		room->number_of_devices = number_of_devices;
+
+		int id = 0, power = 0, hours = 0;
+		string name, type;
+
+		for (int i = 0; i < number_of_devices; i++)
+		{
+			id += 1;
+	
+			clearConsole();
+			menuHeader("EKRAN STARTOWY");
+			cout << "\n\n";
+			cout << "\t\t\t" << room->name << endl;
+			cout << "\t\t\tPodaj nazwe urzadzenia [" << id << "] : ";
+			cout << "\n\n";
+			menuFooter_starting();
+			cursorLine_UP(5);
+	
+			name = clientInput();
+	
+			clearConsole();
+			menuHeader("EKRAN STARTOWY");
+			cout << "\n\n";
+			cout << "\t\t\t" << room->name << endl;
+			cout << "\t\t\tPodaj moc (W) urzadzenia [" << id << "] : ";
+			cout << "\n\n";
+			menuFooter_starting();
+			cursorLine_UP(5);
+	
+			power = stoi(clientInput());
+	
+			clearConsole();
+			menuHeader("EKRAN STARTOWY");
+			cout << "\n\n";
+			cout << "\t\t\t" << room->name << endl;
+			cout << "\t\t\tPodaj czas pracy na dobe urzadzenia (h) [" << id << "] : ";
+			cout << "\n\n";
+			menuFooter_starting();
+			cursorLine_UP(5);
+			cout << "\t\t";
+	
+			hours = stoi(clientInput());
+	
+			clearConsole();
+			menuHeader("EKRAN STARTOWY");
+			cout << "\n\n";
+			cout << "\t\t\t" << room->name << endl;
+			cout << "\t\t\tPodaj typ urzadzenia np. AGD [" << id << "] : ";
+			cout << "\n\n";
+			menuFooter_starting();
+			cursorLine_UP(5);
+			cout << "\t";
+	
+			type = clientInput();
+	
+			Device *newDevice = builder
+									.setID(id)
+									.setName(name)
+									.setPower(power)
+									.setHours(hours)
+									.setType(type)
+									.build();
+	
+			room->add(newDevice);
+		}
+
 	}
 }
 
-void Starting_menu4()
-{
 
-}
 
 

@@ -16,6 +16,7 @@ using namespace std;
 bool running = true;
 string building_name = "";
 Building* building = new Building(building_name);
+DeviceBuilder builder;
 
 int main() {
 	//W startowym menu uzytkownik wpisuje nazwe swojego budynku
@@ -98,3 +99,4 @@ int main() {
 	//  getchar();
 	//  getchar();
 }
+ 

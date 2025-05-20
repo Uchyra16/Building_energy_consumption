@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <cstdlib>
 using namespace std;
 
 #include "Component.h"
@@ -12,7 +13,7 @@ class Device : public Component {
 	private:
 		string name;
 		int power;
-		int hours;
+		double hours;
 		string type;
         int ID;
 
@@ -28,8 +29,11 @@ class Device : public Component {
         void setHours(int hours);
         void setType(const string &type);
         double getEnergyConsumption() const;
+        double simulateDay();
+        double simulateWeek();
+        double simulateMonth();
 
         void display() override;
 
-        friend void Device_configuration(Room* room);
+        friend void listAllDevices(Component *component);
 };

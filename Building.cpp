@@ -25,6 +25,10 @@ void Building::display() {
     {
         cout << "Pokoj [" << i << "] :" << rooms.at(i-1)->name << endl;
     }
+}
 
+vector<Component*> Building::getChildren() 
+{ 
+    return rooms; 
 }
    

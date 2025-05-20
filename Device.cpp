@@ -24,5 +24,26 @@ double Device::getEnergyConsumption() const {
     return (power * hours) / 1000.0; //Zwraca zuzycie w kWh
 }
 
+float randomFloat()
+{
+    return (float)(rand()) / (float)(rand());
+}
+
+double Device::simulateDay() {
+    double randomHours = randomFloat();
+    return (power * randomHours) / 1000.0;
+}
+
+double Device::simulateWeek() {
+    double randomHours = randomFloat();
+    return 7*(power * randomHours) / 1000.0;
+}
+
+double Device::simulateMonth() {
+    double randomHours = randomFloat();
+    return 31*(power * randomHours) / 1000.0;
+}
+
+
 
 

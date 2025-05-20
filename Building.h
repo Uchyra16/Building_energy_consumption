@@ -25,8 +25,11 @@ class Building : public Component {
 
         void display();
 
+        vector<Component *> getChildren() override;
+
         friend void RoomList_menu();
         friend void Room_menu(int ID);
         friend void Starting_menu3();
-        friend void Device_configuration(Room* room);
+        friend void ConsumptionSummary_menu();
+        
     };

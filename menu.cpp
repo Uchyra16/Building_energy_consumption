@@ -67,13 +67,38 @@ void clearConsole() {
     system("cls");
 }
 
+
+void listAllDevices(Component* component) {
+    if (!component) return;
+
+    // Spróbuj zrzutować na Device
+    Device* device = dynamic_cast<Device*>(component);
+    if (device != nullptr) {
+        cout << device->name;
+		cout << " - Estymowane zuzycie: ";
+		cout << device->getEnergyConsumption() << " kWh\n\n";
+		return;
+    }
+
+    // Przejdź do dzieci komponentu
+    for (Component* child : component->getChildren()) {
+        listAllDevices(child);
+    }
+}
+
+
+
+
 void ConsumptionSummary_menu()
 {
 	clearConsole();
 	while(1) {
 		menuHeader("PODSUMOWANIE ZUZYCIA");
-		cout << "\n\n\n\n";
+		cout << "\n\n";
+		listAllDevices(building);
 		menuFooter();
+
+
 
 		char menu_choice = _getch();
 	
@@ -251,7 +276,7 @@ void Starting_menu2()
 	cursorLine_UP(5);
 
 	if(number_of_rooms <= 0 || number_of_rooms > 2000) {
-		cout << "\n\t\t\tLiczba pokoi spoza zakresu! Prosze wpisac liczbe od 1 do 2000...\r";
+		cout << "\n\a\t\t\tLiczba pokoi spoza zakresu! Prosze wpisac liczbe od 1 do 2000...\r";
 		cursorLine_UP(1);
 	}
 

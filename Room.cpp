@@ -36,3 +36,14 @@ void Room::display_devices() {
     }
     cout << "\n\n";
 }
+
+vector<Component*> Room::getChildren() 
+{
+    vector<Component *> result;
+    for (int i = 0; i < devices.size(); i++)
+    {
+        result.push_back(devices.at(i));
+    }
+    return result;
+}
+

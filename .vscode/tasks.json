@@ -13,6 +13,7 @@
           "Device.cpp",
           "DeviceBuilder.cpp",
           "Room.cpp",
+          "Consumption.cpp",
           "-o",
           "app.exe"
         ],

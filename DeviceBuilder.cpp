@@ -31,7 +31,7 @@ DeviceBuilder& DeviceBuilder::setPower(int power) {
     return *this;
 }
 
-DeviceBuilder& DeviceBuilder::setHours(int hours) {
+DeviceBuilder& DeviceBuilder::setHours(double hours) {
     this->device->setHours(hours);
     return *this;
 }

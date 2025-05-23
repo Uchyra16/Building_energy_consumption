@@ -17,6 +17,10 @@ void Building::add(Component* room) {
 
 void Building::remove(Component* room) {
     rooms.erase(std::remove(rooms.begin(), rooms.end(), room), rooms.end());
+
+    for (int i = 1; i <= rooms.size(); ++i) {
+        rooms[i-1]->setId(i); // Zakładamy, że Component ma metodę setId(int)
+    }
 }
 
 void Building::display() {

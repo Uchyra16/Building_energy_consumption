@@ -31,5 +31,8 @@ class Building : public Component {
         friend void Room_menu(int ID);
         friend void Starting_menu3();
         friend void ConsumptionSummary_menu();
-        
-    };
+        friend void add_new_device();
+        friend void remove_device();
+        friend void add_new_room();
+        friend void remove_room();
+};

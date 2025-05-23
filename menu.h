@@ -1,21 +1,31 @@
 #pragma once
 
 #include <iostream>
+#include <bits/stdc++.h>
 #include <conio.h>
 #include "Building.h"
 #include "Device.h"
 #include "DeviceBuilder.h"
 #include "Room.h"
+#include "Consumption.h"
+#include <ctime>
+#include <chrono>
+#include <thread>
 using namespace std;
 
 
-void menuHeader(string text);
+// MENU WINDOWS
+string Starting_menu1();
 
-void menuFooter();
+void Starting_menu2();
 
-void clearConsole();
+void Starting_menu3();
+
+char Main_menu();
 
 void ConsumptionSummary_menu();
+
+void Room_menu(int ID);
 
 void RoomList_menu();
 
@@ -25,18 +35,21 @@ void Notifications_menu();
 
 void Settings_menu();
 
-
-char Main_menu();
-
 void menuFooter_starting();
 
-string Starting_menu1();
+// MENU INTERFACE 
 
-void Starting_menu2();
+void menuHeader(string text);
 
-void Starting_menu3();
+void cursorLine_UP(int num_of_lines);
 
-void Starting_menu4();
+void menuFooter();
 
+void menuFooter_empty();
 
+void clearConsole();
 
+string clientInput();
+
+// OTHER FUNCTIONS
+void print_data_to_file();

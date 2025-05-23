@@ -32,9 +32,15 @@ void Room::display() {
 void Room::display_devices() {
     cout << "\nUrzadzenia: \n";
     for(int i = 0; i < devices.size(); i++) {
+        cout << "[ " << i+1 << " ] ";
         devices.at(i)->display();
     }
     cout << "\n\n";
+}
+
+void Room::setId(int id)
+{
+    this->ID = id;
 }
 
 vector<Component*> Room::getChildren() 

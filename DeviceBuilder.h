@@ -26,7 +26,7 @@ class DeviceBuilder {
 
         DeviceBuilder &setPower(int power);
 
-        DeviceBuilder &setHours(int hours);
+        DeviceBuilder &setHours(double hours);
 
         DeviceBuilder &setType(const string &type);
 

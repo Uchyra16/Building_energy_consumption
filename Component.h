@@ -14,6 +14,7 @@ class Component {
         virtual void add(Component *component) {}
         virtual void remove(Component *component) {}
         virtual void display() {}
+        virtual void setId(int id) {}
         virtual std::vector<Component*> getChildren() { return {}; }
 
         virtual ~Component() {

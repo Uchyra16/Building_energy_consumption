@@ -25,6 +25,8 @@ class Room : public Component {
 
         void display_devices();
 
+        void setId(int id) override;
+
         vector<Component *> getChildren() override;
 
         friend void RoomList_menu();
